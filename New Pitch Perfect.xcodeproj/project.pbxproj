@@ -14,7 +14,6 @@
 		484A29E51B82228B001CFC17 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 484A29E31B82228B001CFC17 /* LaunchScreen.xib */; };
 		484A29F11B82228B001CFC17 /* New_Pitch_PerfectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A29F01B82228B001CFC17 /* New_Pitch_PerfectTests.swift */; };
 		484A29FB1B8228EA001CFC17 /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A29FA1B8228EA001CFC17 /* PlaySoundsViewController.swift */; };
-		484A29FD1B822902001CFC17 /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 484A29FC1B822902001CFC17 /* movie_quote.mp3 */; };
 		484A29FF1B822E3C001CFC17 /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A29FE1B822E3C001CFC17 /* RecordedAudio.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +39,6 @@
 		484A29EF1B82228B001CFC17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		484A29F01B82228B001CFC17 /* New_Pitch_PerfectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New_Pitch_PerfectTests.swift; sourceTree = "<group>"; };
 		484A29FA1B8228EA001CFC17 /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
-		484A29FC1B822902001CFC17 /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = movie_quote.mp3; sourceTree = "<group>"; };
 		484A29FE1B822E3C001CFC17 /* RecordedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,7 +96,6 @@
 		484A29D81B82228B001CFC17 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				484A29FC1B822902001CFC17 /* movie_quote.mp3 */,
 				484A29D91B82228B001CFC17 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -203,7 +200,6 @@
 			files = (
 				484A29E01B82228B001CFC17 /* Main.storyboard in Resources */,
 				484A29E51B82228B001CFC17 /* LaunchScreen.xib in Resources */,
-				484A29FD1B822902001CFC17 /* movie_quote.mp3 in Resources */,
 				484A29E21B82228B001CFC17 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
