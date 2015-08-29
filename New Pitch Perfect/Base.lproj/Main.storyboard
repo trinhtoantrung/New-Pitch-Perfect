@@ -123,6 +123,24 @@
                                     <action selector="playSoundsDarthVaderEffect:" destination="bLo-iK-OGT" eventType="touchUpInside" id="XXi-wC-YkE"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXi-gV-Ieo">
+                                <rect key="frame" x="189" y="365" width="80" height="80"/>
+                                <state key="normal" image="echo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playSoundsWithEchoEffect:" destination="bLo-iK-OGT" eventType="touchUpInside" id="74q-Xg-Wph"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4E-R0-9A8">
+                                <rect key="frame" x="51" y="365" width="80" height="80"/>
+                                <state key="normal" image="reverb">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playSoundsReverbEffect:" destination="bLo-iK-OGT" eventType="touchUpInside" id="4a7-cJ-Bd0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.3294117647" green="0.79607843140000001" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -131,12 +149,16 @@
                             <constraint firstAttribute="trailingMargin" secondItem="qq2-ml-asx" secondAttribute="trailing" constant="25" id="7Zg-fH-Pbv"/>
                             <constraint firstItem="qq2-ml-asx" firstAttribute="top" secondItem="4EJ-Ev-jJh" secondAttribute="bottom" constant="25" id="ALh-z3-WTI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TCt-MM-XUl" secondAttribute="trailing" constant="25" id="DXV-lX-C5J"/>
+                            <constraint firstItem="XXi-gV-Ieo" firstAttribute="top" secondItem="TCt-MM-XUl" secondAttribute="bottom" constant="38" id="F5Y-Jf-mnD"/>
                             <constraint firstItem="kja-gC-qob" firstAttribute="leading" secondItem="8k8-qf-7ff" secondAttribute="leadingMargin" constant="25" id="HaW-Np-i2d"/>
+                            <constraint firstItem="kja-gC-qob" firstAttribute="centerX" secondItem="u4E-R0-9A8" secondAttribute="centerX" id="Tez-29-Pf9"/>
                             <constraint firstAttribute="centerY" secondItem="FLJ-Wb-bCe" secondAttribute="centerY" constant="-239" id="Xhu-VA-xTv"/>
+                            <constraint firstItem="u4E-R0-9A8" firstAttribute="top" secondItem="kja-gC-qob" secondAttribute="bottom" constant="38" id="bbS-Ry-mac"/>
                             <constraint firstItem="kja-gC-qob" firstAttribute="top" secondItem="Fl2-P8-6fa" secondAttribute="bottom" constant="38" id="cGh-9E-laO"/>
                             <constraint firstItem="1mX-x3-qhd" firstAttribute="top" secondItem="FLJ-Wb-bCe" secondAttribute="bottom" constant="20" id="dJn-GA-Zvb"/>
                             <constraint firstItem="Fl2-P8-6fa" firstAttribute="leading" secondItem="8k8-qf-7ff" secondAttribute="leadingMargin" constant="25" id="dkJ-lj-hih"/>
                             <constraint firstItem="Fl2-P8-6fa" firstAttribute="top" secondItem="4EJ-Ev-jJh" secondAttribute="bottom" constant="25" id="ofo-Xy-cl7"/>
+                            <constraint firstItem="TCt-MM-XUl" firstAttribute="centerX" secondItem="XXi-gV-Ieo" secondAttribute="centerX" id="rte-o7-cGP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CuL-Me-zTn"/>
@@ -167,8 +189,10 @@
     <resources>
         <image name="chipmunk-effect" width="100" height="100"/>
         <image name="darthvader-effect" width="100" height="100"/>
+        <image name="echo" width="80" height="80"/>
         <image name="fast-effect" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
+        <image name="reverb" width="80" height="80"/>
         <image name="slow-effect" width="100" height="100"/>
         <image name="stop" width="50" height="50"/>
     </resources>

@@ -35,7 +35,7 @@ class PlaySoundsViewController: UIViewController {
     
     func playAudioWithPitch(pitch:Float){
         stopAllAudios()
-        
+
         var audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
         
@@ -45,6 +45,31 @@ class PlaySoundsViewController: UIViewController {
         
         audioEngine.connect(audioPlayerNode, to: pitchEffectNode, format: nil)
         audioEngine.connect(pitchEffectNode, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        audioEngine.startAndReturnError(nil)
+        
+        audioPlayerNode.play()
+    }
+    
+    
+    func playAudioWithReverb(blend:Float){
+        stopAllAudios()
+        
+        // create instance AVAudioPlayerNode and be attached by AVAudioEngine
+        var audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        
+        // create instance of AVAudioUnitReverb, load and set value to this node, attach this node to AVAudioEngine instace
+        var reverbEffectNode = AVAudioUnitReverb()
+        reverbEffectNode.loadFactoryPreset(AVAudioUnitReverbPreset.LargeRoom)
+        reverbEffectNode.wetDryMix = blend
+        audioEngine.attachNode(reverbEffectNode)
+        
+        // connect the instance of AVAudioPlayerNode to the instance of AVAudioUnitReverb
+        // connect the instance of AVAudioUnitReverb to the output of the AVAudioEngine's instance
+        audioEngine.connect(audioPlayerNode, to: reverbEffectNode, format: nil)
+        audioEngine.connect(reverbEffectNode, to: audioEngine.outputNode, format: nil)
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         audioEngine.startAndReturnError(nil)
@@ -62,22 +87,35 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playSoundsSlowEffect(sender: UIButton) {
+        println("play with slow effect")
         playAudioWithRate(0.5)
     }
 
     @IBAction func playSoundsFastEffect(sender: UIButton) {
+        println("play with fast effect")
         playAudioWithRate(1.5)
     }
     
     @IBAction func playSoundsChipMunkEffect(sender: UIButton) {
+        println("play with chipmunk effect")
         playAudioWithPitch(1000)
     }
     
     @IBAction func playSoundsDarthVaderEffect(sender: UIButton) {
+        println("play with darthvader effect")
         playAudioWithPitch(-1000)
     }
     
     @IBAction func stop(sender: UIButton) {
+        println("stop playing")
         stopAllAudios()
+    }
+    
+    @IBAction func playSoundsReverbEffect(sender: UIButton) {
+        println("play with reverb effect")
+        playAudioWithReverb(50)
+    }
+    
+    @IBAction func playSoundsWithEchoEffect(sender: UIButton) {
     }
 }
