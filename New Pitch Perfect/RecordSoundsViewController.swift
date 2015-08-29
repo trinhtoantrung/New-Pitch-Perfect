@@ -12,49 +12,67 @@ import AVFoundation
 class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     var audioRecorder:AVAudioRecorder!
     var recordedAudio: RecordedAudio!
+    var timer: NSTimer!
+    let tabToRecordString = "Tab to Record"
+    let recordingString = "Recording"
+    let resumeString = "Resume"
 
     @IBOutlet weak var recordingButton: UIButton!
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     
+    override func viewDidLoad() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "recording", userInfo: nil, repeats: true);
+    }
+    
+    func recording() {
+        if recordingLabel.text == recordingString {
+            recordingButton.highlighted = !recordingButton.highlighted
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         // hide the stop button
         stopButton.hidden = true
-        recordingButton.enabled = true
     }
 
     @IBAction func record(sender: UIButton) {
-        // TODO: show text "recording in process"
         // TODO: Record the user's voice
         // show the stop button
-        println("in recording audio")
-        recordingLabel.text = "Recording"
-        stopButton.hidden = false
-        recordingButton.enabled = false
         
-        // record audio
-        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        // Tab to record
+        if recordingLabel.text == tabToRecordString {
+            println("in recording audio")
+            recordingLabel.text = recordingString
+            stopButton.hidden = false
         
-        let recordingName = "my_audio.wav"
-        let pathArray = [dirPath, recordingName]
-        let filePath = NSURL.fileURLWithPathComponents(pathArray)
-        println(filePath)
+            // record audio
+            let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         
-        var session = AVAudioSession.sharedInstance()
-        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
+            let recordingName = "my_audio.wav"
+            let pathArray = [dirPath, recordingName]
+            let filePath = NSURL.fileURLWithPathComponents(pathArray)
         
-        audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
-        audioRecorder.delegate = self
-        audioRecorder.meteringEnabled = true
-        audioRecorder.prepareToRecord()
-        audioRecorder.record()
-
+            var session = AVAudioSession.sharedInstance()
+            session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
+        
+            audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
+            audioRecorder.delegate = self
+            audioRecorder.meteringEnabled = true
+            audioRecorder.prepareToRecord()
+            audioRecorder.record()
+        } else if recordingLabel.text == recordingString {
+            println("pause recoring")
+            pauseRecording()
+        } else if recordingLabel.text == resumeString {
+            println("resume recording")
+            resumeRecording()
+        }
     }
 
     @IBAction func stopRecording(sender: UIButton) {
         println("stop recording")
-        recordingLabel.text = "Tab to record"
-        recordingButton.enabled = true
+        recordingLabel.text = tabToRecordString
         
         // stop recording
         audioRecorder.stop()
@@ -73,7 +91,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
         } else {
             println("recording was not successful")
-            recordingButton.enabled = true
+            //recordingButton.enabled = true
             stopButton.hidden = true
         }
     }
@@ -84,6 +102,16 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             let data = sender as! RecordedAudio
             playSoundsVC.receivedAudio = data
         }
+    }
+    
+    func pauseRecording() {
+        audioRecorder.pause()
+        recordingLabel.text = resumeString
+    }
+    
+    func resumeRecording() {
+        audioRecorder.record()
+        recordingLabel.text = recordingString
     }
 }
 
