@@ -23,13 +23,13 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.enableRate = true
         
         audioEngine = AVAudioEngine()
-        audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil);
+        audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
     }
     
     func playAudioWithPitch(pitch:Float){
-        audioPlayer.stop();
-        audioEngine.stop();
-        audioEngine.reset();
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
         
         var audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
@@ -53,23 +53,23 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playSoundsSlowEffect(sender: UIButton) {
-        audioPlayer.stop();
-        audioEngine.stop();
-        audioEngine.reset();
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
         
-        audioPlayer.rate = 0.5;
-        audioPlayer.currentTime = 0;
-        audioPlayer.play();
+        audioPlayer.rate = 0.5
+        audioPlayer.currentTime = 0
+        audioPlayer.play()
     }
 
     @IBAction func playSoundsFastEffect(sender: UIButton) {
-        audioPlayer.stop();
-        audioEngine.stop();
-        audioEngine.reset();
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
         
-        audioPlayer.rate = 1.5;
-        audioPlayer.currentTime = 0;
-        audioPlayer.play();
+        audioPlayer.rate = 1.5
+        audioPlayer.currentTime = 0
+        audioPlayer.play()
     }
     
     @IBAction func playSoundsChipMunkEffect(sender: UIButton) {
@@ -81,8 +81,8 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func stop(sender: UIButton) {
-        audioPlayer.stop();
-        audioEngine.stop();
-        audioEngine.reset();
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
     }
 }

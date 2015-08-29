@@ -24,8 +24,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func viewWillAppear(animated: Bool) {
         // hide the stop button
-        stopButton.hidden = true;
-        recordingButton.enabled = true;
+        stopButton.hidden = true
+        recordingButton.enabled = true
 
     }
 
@@ -38,11 +38,11 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         // TODO: show text "recording in process"
         // TODO: Record the user's voice
         // show the stop button
-        println("in recording audio");
-        //recordingLabel.hidden = false;
+        println("in recording audio")
+        //recordingLabel.hidden = false
         recordingLabel.text = "Recording"
-        stopButton.hidden = false;
-        recordingButton.enabled = false;
+        stopButton.hidden = false
+        recordingButton.enabled = false
         
         // record audio
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
@@ -64,10 +64,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     @IBAction func stopRecording(sender: UIButton) {
-        println("stop recording");
-        //recordingLabel.hidden = true;
+        println("stop recording")
+        //recordingLabel.hidden = true
         recordingLabel.text = "Tab to record"
-        recordingButton.enabled = true;
+        recordingButton.enabled = true
         
         // stop recording
         audioRecorder.stop()
