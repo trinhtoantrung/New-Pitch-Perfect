@@ -14,14 +14,16 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     var recordedAudio: RecordedAudio!
     var timer: NSTimer!
     let tabToRecordString = "Tab to Record"
-    let recordingString = "Recording"
-    let resumeString = "Resume"
+    let recordingString = "Press To Pause"
+    let resumeString = "Press To Resume"
 
     @IBOutlet weak var recordingButton: UIButton!
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "recording", userInfo: nil, repeats: true);
     }
     
@@ -32,6 +34,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
         // hide the stop button
         stopButton.hidden = true
     }
