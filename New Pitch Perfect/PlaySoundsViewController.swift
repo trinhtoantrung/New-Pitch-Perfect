@@ -46,11 +46,6 @@ class PlaySoundsViewController: UIViewController {
         
         audioPlayerNode.play()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func playSoundsSlowEffect(sender: UIButton) {
         audioPlayer.stop()

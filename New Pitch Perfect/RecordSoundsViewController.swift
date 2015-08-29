@@ -17,21 +17,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
     override func viewWillAppear(animated: Bool) {
         // hide the stop button
         stopButton.hidden = true
         recordingButton.enabled = true
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func record(sender: UIButton) {
@@ -39,7 +28,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         // TODO: Record the user's voice
         // show the stop button
         println("in recording audio")
-        //recordingLabel.hidden = false
         recordingLabel.text = "Recording"
         stopButton.hidden = false
         recordingButton.enabled = false
@@ -65,7 +53,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBAction func stopRecording(sender: UIButton) {
         println("stop recording")
-        //recordingLabel.hidden = true
         recordingLabel.text = "Tab to record"
         recordingButton.enabled = true
         
@@ -82,7 +69,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             recordedAudio = RecordedAudio(title: recorder.url.lastPathComponent!, filePathUrl: recorder.url)
             
             // move to the next scence
-            self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
+            performSegueWithIdentifier("stopRecording", sender: recordedAudio)
 
         } else {
             println("recording was not successful")
