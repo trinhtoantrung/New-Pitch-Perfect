@@ -14,6 +14,7 @@ class PlaySoundsViewController: UIViewController {
     var receivedAudio:RecordedAudio!
     var audioEngine:AVAudioEngine!
     var audioFile:AVAudioFile!
+    var audioPlayer2:AVAudioPlayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class PlaySoundsViewController: UIViewController {
         // Do any additional setup after loading the view.
         audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
         audioPlayer.enableRate = true
+        audioPlayer2 = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
         
         audioEngine = AVAudioEngine()
         audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
@@ -31,6 +33,21 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.stop()
         audioEngine.stop()
         audioEngine.reset()
+        audioPlayer2.stop()
+    }
+    
+    func playAudioWithEcho(){
+        stopAllAudios()
+        audioPlayer.currentTime = 0
+        audioPlayer.play()
+        
+        let delay:NSTimeInterval = 0.2//100ms
+        var playtime:NSTimeInterval
+        playtime = audioPlayer2.deviceCurrentTime + delay
+        audioPlayer2.stop()
+        audioPlayer2.currentTime = 0
+        audioPlayer2.volume = 0.8;
+        audioPlayer2.playAtTime(playtime)
     }
     
     func playAudioWithPitch(pitch:Float){
@@ -117,5 +134,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playSoundsWithEchoEffect(sender: UIButton) {
+        println("play with echo effect")
+        playAudioWithEcho()
     }
 }
